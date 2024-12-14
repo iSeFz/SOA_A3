@@ -1,0 +1,54 @@
+[
+  {
+    "FirstName": "Shawky",
+    "LastName": "Ebrahim",
+    "EmployeeID": 1001,
+    "Designation": "Manager",
+    "KnownLanguages": [
+      {
+        "LanguageName": "JavaScript",
+        "ScoreOutOf100": 80
+      },
+      {
+        "LanguageName": "Python",
+        "ScoreOutOf100": 50
+      },
+      {
+        "LanguageName": "Cpp",
+        "ScoreOutOf100": 20
+      }
+    ]
+  },
+  {
+    "FirstName": "Seif",
+    "LastName": "Yehia",
+    "EmployeeID": 1002,
+    "Designation": "Developer",
+    "KnownLanguages": [
+      {
+        "LanguageName": "NodeJS",
+        "ScoreOutOf100": 20
+      },
+      {
+        "LanguageName": "Ruby",
+        "ScoreOutOf100": 80
+      }
+    ]
+  },
+  {
+    "FirstName": "Belal",
+    "LastName": "Ahmed",
+    "EmployeeID": 2000,
+    "Designation": "Team Leader",
+    "KnownLanguages": [
+      {
+        "LanguageName": "Go",
+        "ScoreOutOf100": 60
+      },
+      {
+        "LanguageName": "Ruby",
+        "ScoreOutOf100": 80
+      }
+    ]
+  }
+]

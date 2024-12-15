@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "4f5abf09-916d-4906-b38e-a4a6577def93",
+		"name": "Employees Management",
+		"description": "Service-Oriented Architecture Assignment #3 at FCAI CU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32041030"
+	},
+	"item": [
+		{
+			"name": "Get All Employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:3000/api/employees",
+				"description": "Retrieve all employees from the JSON file."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employees By Language and Score",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/lang-score?language=Java&score=50",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"lang-score"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Java"
+						},
+						{
+							"key": "score",
+							"value": "50"
+						}
+					]
+				},
+				"description": "Retrieve the employees who know the Java language with score higher than 50 and sort the result in ascending order."
+			},
+			"response": []
+		},
+		{
+			"name": "Search For An Employee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/search-employee/?value=1002",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"search-employee",
+						""
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "1002"
+						}
+					]
+				},
+				"description": "Search for a specific EmployeeID or Designation and retrieve the result from the JSON file."
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"FirstName\": \"Nancy\",\n    \"LastName\": \"Saeed\",\n    \"EmployeeID\": 1005,\n    \"Designation\": \"Teaching Assistant\",\n    \"KnownLanguages\": [\n        {\n            \"LanguageName\": \"Java\",\n            \"ScoreOutOf100\": 70\n        },\n        {\n            \"LanguageName\": \"C#\",\n            \"ScoreOutOf100\": 80\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/api/new-employee",
+				"description": "Add new employee to the database (JSON file)"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee Data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"KnownLanguages\": [\n        {\n            \"LanguageName\": \"Java\",\n            \"ScoreOutOf100\": 70\n        },\n        {\n            \"LanguageName\": \"C#\",\n            \"ScoreOutOf100\": 80\n        },\n        {\n            \"LanguageName\": \"Python\",\n            \"ScoreOutOf100\": 50\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/api/update-employee/1005",
+				"description": "Update existing employee data"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:3000/api/delete-employee/1005",
+				"description": "Delete specific employee by EmployeeID"
+			},
+			"response": []
+		}
+	]
+}

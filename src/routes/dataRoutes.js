@@ -6,11 +6,11 @@ const setRoutes = (app) => {
     const dataController = new DataController();
 
     router.get('/employees', dataController.getEmployees.bind(dataController));
-    router.get('/language-score', dataController.getDataLanguageScore.bind(dataController));
-    router.get('/search-employee/:value', dataController.searchData.bind(dataController));
-    router.post('/new-employee', dataController.addData.bind(dataController));
-    router.put('/employee/:id', dataController.updateData.bind(dataController));
-    router.delete('/employee/:id', dataController.deleteData.bind(dataController));
+    router.get('/lang-score', dataController.getEmpsByLanguageScore.bind(dataController));
+    router.get('/search-employee', dataController.searchEmployee.bind(dataController));
+    router.post('/new-employee', dataController.addEmployee.bind(dataController));
+    router.put('/update-employee/:id', dataController.updateEmployee.bind(dataController));
+    router.delete('/delete-employee/:id', dataController.deleteEmployee.bind(dataController));
 
     app.use('/api', router);
 };

@@ -1,6 +1,41 @@
-# My Node.js Application
+# Service-Oriented Architecture Assignment #3
 
-This is a simple Node.js application that reads and manipulates data from a JSON file through a RESTful API.
+## Description
+NodeJS application to store employees data into JSON file through a RESTful API.
+
+## Application Features
+The program should allow users to perform the following actions:
+* Add new employee to the database with validations on all input fields.
+* Update employee details, all fields can be updated (except for EmployeeID).
+* Search for an employee with EmployeeID or Designation and show the number of found employees.
+* Delete certain employee using EmployeeID.
+
+## JSON File Template
+> The JSON file should look something like this
+```json
+[
+  {
+    "FirstName": "Sam",
+    "LastName": "Jackson",
+    "EmployeeID": 1000,
+    "Designation": "Manager",
+    "KnownLanguages": [
+      {
+        "LanguageName": "Java",
+        "ScoreOutOf100": 90
+      },
+      {
+        "LanguageName": "C#",
+        "ScoreOutOf100": 50
+      },
+      {
+        "LanguageName": "C++",
+        "ScoreOutOf100": 80
+      }
+    ]
+  }
+]
+```
 
 ## Project Structure
 
@@ -16,8 +51,9 @@ my-node-app
 │   │   └── dataService.js
 │   ├── data                  # JSON data file
 │   │   └── data.json
-│   └── utils                 # Utility functions for file operations
-│       └── fileUtils.js
+│   └── utils                 # Utility functions
+│       ├── fileUtils.js
+│       └── validationsUtils.js
 ├── package.json              # NPM configuration file
 ├── .gitignore                # Specifies files to ignore in Git
 └── README.md                 # Project documentation
@@ -28,13 +64,13 @@ my-node-app
 1. Clone the repository:
 
    ```
-   git clone <repository-url>
+   git clone https://github.com/iSeFz/SOA_A3.git
    ```
 
 2. Navigate to the project directory:
 
    ```
-   cd my-node-app
+   cd SOA_A3
    ```
 
 3. Install Node.js if you haven't already:
@@ -67,10 +103,12 @@ The API will be available at `http://localhost:3000`.
 
 ## API Endpoints
 
-- `GET /data` - Retrieve all data
-- `POST /data` - Add new data
-- `PUT /data/:id` - Update existing data
-- `DELETE /data/:id` - Delete data by ID
+- `GET /employees` - Retrieve all employees
+- `GET /lang-score` - Retrieve certain employees by language score
+- `GET /search-employee` - Search for employee by EmployeeID or Designation
+- `POST /new-employee` - Add new employee
+- `PUT /update-employee/:id` - Update existing employee data
+- `DELETE /delete-employee/:id` - Delete certain employee by ID
 
 ## Contributing
 

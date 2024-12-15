@@ -8,11 +8,11 @@ class DataController {
             const data = await dataService.readData();
             res.status(200).json(data);
         } catch (error) {
-            res.status(500).json({ message: 'Error retrieving data' });
+            res.status(500).json({ message: 'Error retrieving employees' });
         }
     }
 
-    async getDataLanguageScore(req, res) {
+    async getEmpsByLanguageScore(req, res) {
         try {
             const data = await dataService.readData();
             if (req.query.language && req.query.score) {
@@ -30,13 +30,13 @@ class DataController {
                 res.status(400).json({ message: 'Invalid query parameters' });
             }
         } catch (error) {
-            res.status(500).json({ message: 'Error retrieving data' });
+            res.status(500).json({ message: 'Error retrieving employees' });
         }
     }
 
-    async searchData(req, res) {
+    async searchEmployee(req, res) {
         try {
-            const value = req.params.value.toLowerCase();
+            const value = req.query.value.toLowerCase();
             const data = await dataService.readData();
             const result = data.filter(item =>
                 item.EmployeeID.toString() === value ||
@@ -44,11 +44,11 @@ class DataController {
             );
             res.status(200).json(result);
         } catch (error) {
-            res.status(500).json({ message: 'Error searching data' });
+            res.status(500).json({ message: 'Error searching employees' });
         }
     }
 
-    async addData(req, res) {
+    async addEmployee(req, res) {
         try {
             const newData = req.body;
             const data = await dataService.readData();
@@ -60,17 +60,20 @@ class DataController {
             await dataService.writeData(data);
             res.status(201).json(newData);
         } catch (error) {
-            res.status(500).json({ message: 'Error adding data' });
+            res.status(500).json({ message: 'Error adding employee' });
         }
     }
 
-    async updateData(req, res) {
+    async updateEmployee(req, res) {
         try {
             const id = parseInt(req.params.id, 10);
             const updatedData = req.body;
             const data = await dataService.readData();
             const index = data.findIndex(item => item.EmployeeID === id);
             if (index !== -1) {
+                if (updatedData.EmployeeID) {
+                    return res.status(400).json({ message: 'EmployeeID cannot be updated' });
+                }
                 const errors = ValidationUtils.validateEmployee({ ...data[index], ...updatedData }, data, false);
                 if (errors.length > 0) {
                     return res.status(400).json({ errors });
@@ -86,7 +89,7 @@ class DataController {
         }
     }
 
-    async deleteData(req, res) {
+    async deleteEmployee(req, res) {
         try {
             const id = parseInt(req.params.id, 10);
             const data = await dataService.readData();
